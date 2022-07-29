@@ -1,0 +1,7 @@
+$--color-primary:#00a4ff;
+$--font-path: "~element-ui/lib/theme-chalk/fonts";
+
+@import "~element-ui/packages/theme-chalk/src/index";
+:export {
+  theme: $--color-primary;
+}
