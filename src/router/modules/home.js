@@ -1,10 +1,10 @@
 import Layout from '@/layout/index.vue'
 export const Home = [
   {
-    path: '/home',
+    path: '/projectlist',
     component: Layout,
-    // redirect: '/home',
-    name: 'home',
+    redirect: '/projectlist',
+    name: 'projectlist',
     meta: {
       title: '项目列表',
       icon: 'el-icon-s-home',
@@ -36,6 +36,12 @@ export const Home = [
           title: '图形',
           icon: 'el-icon-magic-stick',
         },
+      },
+      {
+        path: '/projectlist',
+        name: 'projectlist',
+        component: () => import('@/pages/projectList/index'),
+        hidden: true,
       },
     ],
   },

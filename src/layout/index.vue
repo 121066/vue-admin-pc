@@ -1,6 +1,6 @@
 <template>
-  <div class="wrapper" :class="classObj">
-    <div class="container">
+  <div class="wrapper">
+    <div class="container" :class="classObj">
       <div class="sidebar-container" :style="{'width':sidebar?'54px':'200px'}">
         <sidebar></sidebar>
       </div>
@@ -46,11 +46,13 @@ export default {
 @import "../style/sidebar.scss";
 .wrapper {
   position: relative;
-  height: 100%;
+  height: 100vh;
   width: 100%;
+  overflow: hidden;
 }
 .container {
-  min-height: calc(100vh - 84px);
+  // min-height: calc(100vh - 84px);
+  height: 100%;
   display: flex;
   flex-direction: row;
 }

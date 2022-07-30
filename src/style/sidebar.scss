@@ -38,8 +38,11 @@
         margin-left: 19px;
       }
 
-      .el-submenu__icon-arrow {
-        display: none;
+     &> .el-submenu__icon-arrow {
+        display: none !important;
+      }
+      .el-icon-arrow-right{
+        display: none !important;
       }
     }
   }
@@ -59,10 +62,7 @@
   }
   
 }
-.el-submenu__icon-arrow {
+ .el-submenu__icon-arrow {
   display: none !important;
 }
-// .hideSidebar>.container>.el-scrollbar__view> .el-menu--collapse> .el-submenu> .el-submenu__title >.el-submenu__icon-arrow{
-//   display: none !important;
-// }
 

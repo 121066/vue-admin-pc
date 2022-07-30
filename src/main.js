@@ -6,6 +6,7 @@ import Element from 'element-ui'
 import './permission'
 import './style/elementui.scss'
 import './style/index.css'
+import './style/index.scss'
 // import 'element-ui/lib/theme-chalk/index.css'
 Vue.config.productionTip = false
 Vue.use(Element)

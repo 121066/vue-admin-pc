@@ -8,6 +8,18 @@ export const adminRouter = [
   {
     path: '/',
     component: Layout,
+    redirect: '/home',
+    children: [
+      {
+        path: 'home',
+        component: () => import('@/pages/home/index'),
+      },
+    ],
+  },
+  {
+    path: '/login',
+    component: () => import('@/pages/login/index'),
+    hidden: true,
   },
 ]
 export const routerPath = [...Home, ...admin]

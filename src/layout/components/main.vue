@@ -23,8 +23,12 @@ export default {
 </script>
 <style scoped>
 .app-main {
-  width: 100%;
+  padding: 20px;
   position: relative;
   overflow: hidden;
+  /* min-height: calc(100vh- 50px);
+   */
+  height: 100%;
+  background-color: #f0f2f5;
 }
 </style>
