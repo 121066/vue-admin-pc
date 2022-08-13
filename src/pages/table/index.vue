@@ -91,7 +91,7 @@ export default {
 </script>
 <style scoped>
 .table {
-  padding: 20px;
+  /* margin: 20px; */
   /* background: #fff; */
   overflow: hidden;
   height: 100%;

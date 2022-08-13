@@ -11,7 +11,7 @@ export const Home = [
     },
     children: [
       {
-        path: 'table',
+        path: '/table',
         component: (resolve) => require(['@/pages/table/index.vue'], resolve),
         name: 'table',
         meta: {

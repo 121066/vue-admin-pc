@@ -1,13 +1,19 @@
 <template>
   <div class="wrapper">
     <div class="container" :class="classObj">
-      <div
+      <!-- <div
         class="sidebar-container"
-        :style="{ width: sidebar ? '54px' : '200px' }"
+        :style="{ width: sidebar ? '54px' : '220px' }"
       >
         <sidebar></sidebar>
-      </div>
+      </div> -->
       <el-container>
+        <el-aside :style="{ width: sidebar ? '54px' : '200px' }">
+                   
+          <div class="sidebar-container">        <sidebar></sidebar>      </div>
+                 
+        </el-aside>
+
         <el-main>
           <Header></Header>
           <Main> </Main>
@@ -82,5 +88,8 @@ export default {
 // }
 ::v-deep .el-main {
   padding: 5px;
+}
+::v-deep .el-aside {
+  transition: 0.5s ease-in;
 }
 </style>

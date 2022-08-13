@@ -21,7 +21,7 @@ export default {
 </script>
 <style scoped>
 .app-main {
-  margin: 20px;
+  padding: 20px;
   /* position: relative; */
   /* overflow: hidden; */
   /* min-height: calc(100vh- 50px); */
