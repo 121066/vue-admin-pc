@@ -1,17 +1,45 @@
 <template>
   <div v-if="!item.hidden">
-    <template v-if="hasOneShowingChild(item.children,item) && (!onlyOneChild.children||onlyOneChild.noShowingChildren)&&!item.alwaysShow">
+    <template
+      v-if="
+        hasOneShowingChild(item.children, item) &&
+        (!onlyOneChild.children || onlyOneChild.noShowingChildren) &&
+        !item.alwaysShow
+      "
+    >
       <app-link v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path)">
-        <el-menu-item :index="resolvePath(onlyOneChild.path)" :class="{'submenu-title-noDropdown':!isNest}">
-          <item :icon="onlyOneChild.meta.icon||(item.meta&&item.meta.icon)" :title="onlyOneChild.meta.title" />
+        <el-menu-item
+          :index="resolvePath(onlyOneChild.path)"
+          :class="{ 'submenu-title-noDropdown': !isNest }"
+        >
+          <item
+            :icon="onlyOneChild.meta.icon || (item.meta && item.meta.icon)"
+            :title="onlyOneChild.meta.title"
+          />
         </el-menu-item>
       </app-link>
     </template>
-    <el-submenu v-else ref="subMenu" :index="resolvePath(item.path)" popper-append-to-body>
+    <el-submenu
+      v-else
+      ref="subMenu"
+      :index="resolvePath(item.path)"
+      popper-append-to-body
+    >
       <template slot="title">
-        <item v-if="item.meta" :icon="item.meta && item.meta.icon" :title="item.meta.title" />
+        <item
+          v-if="item.meta"
+          :icon="item.meta && item.meta.icon"
+          :title="item.meta.title"
+        />
       </template>
-      <sidebar-item v-for="child in item.children" :key="child.path" :is-nest="false" :item="child" :base-path="resolvePath(child.path)" class="nest-menu" />
+      <sidebar-item
+        v-for="child in item.children"
+        :key="child.path"
+        :is-nest="false"
+        :item="child"
+        :base-path="resolvePath(child.path)"
+        class="nest-menu"
+      />
     </el-submenu>
   </div>
 </template>
@@ -24,35 +52,35 @@ export default {
   name: 'SidebarItem',
   components: {
     appLink,
-    Item
+    Item,
   },
   props: {
     item: {
       type: Object,
-      required: true
+      required: true,
     },
     isNest: {
       type: Boolean,
-      default: false
+      default: false,
     },
     basePath: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   data() {
-    return {
-
-    }
+    this.onlyOneChild = null
+    return {}
   },
   methods: {
     hasOneShowingChild(children = [], parent) {
-      const showingChildren = children.filter(item => {
+      const showingChildren = children.filter((item) => {
         if (item.hidden) {
           return false
         } else {
           // Temp set(will be used if only has one showing child)
           this.onlyOneChild = item
+          console.log(this.resolvePath(item.path), '???lu')
           return true
         }
       })
@@ -79,8 +107,8 @@ export default {
       }
       // console.log(path, "///")
       return path.resolve(this.basePath, routePath)
-    }
-  }
+    },
+  },
 }
 </script>
 <style scoped>

@@ -12,7 +12,7 @@ export const admin = [
     children: [
       {
         hidden: true,
-        path: '/admin/page',
+        path: 'page',
         name: 'page',
         component: () => import('@/pages/admin/index'),
         meta: {

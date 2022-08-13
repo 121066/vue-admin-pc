@@ -2,16 +2,33 @@
   <div class="login">
     <div class="login_in p_cenetr focus d_center">
       <div class="d_center title">登 录</div>
-      <el-form class="login_form" ref="formLogin" :rules="rules" label-width="60px" :model="formLogin">
+      <el-form
+        class="login_form"
+        ref="formLogin"
+        :rules="rules"
+        label-width="60px"
+        :model="formLogin"
+      >
         <el-form-item label="用户:" prop="userName">
-          <el-input prefix-icon="el-icon-user-solid" v-model="formLogin.userName" clearable></el-input>
+          <el-input
+            prefix-icon="el-icon-user-solid"
+            v-model="formLogin.userName"
+            clearable
+          ></el-input>
         </el-form-item>
         <el-form-item label="密码:" prop="passWord">
-          <el-input prefix-icon="el-icon-unlock" v-model="formLogin.passWord" clearable type="password"></el-input>
+          <el-input
+            prefix-icon="el-icon-unlock"
+            v-model="formLogin.passWord"
+            clearable
+            type="password"
+          ></el-input>
         </el-form-item>
       </el-form>
       <div class="login_btn">
-        <el-button type="primary" :loading="isLoading" @click="setLogin">登录</el-button>
+        <el-button type="primary" :loading="isLoading" @click="setLogin"
+          >登录</el-button
+        >
       </div>
     </div>
   </div>
@@ -25,22 +42,30 @@ export default {
       isLoading: false,
       formLogin: {
         userName: '',
-        passWord: ''
+        passWord: '',
       },
       rules: {
         userName: [
           {
-            required: true, message: '请输入用户名', trigger: 'blur'
-          }
+            required: true,
+            message: '请输入用户名',
+            trigger: 'blur',
+          },
         ],
         passWord: [
           {
-            required: true, message: '请输入密码', trigger: 'blur'
-          }, {
-            min: 3, max: 8, message: '密码长度在3到8之间', trigger: 'blur'
-          }
-        ]
-      }
+            required: true,
+            message: '请输入密码',
+            trigger: 'blur',
+          },
+          {
+            min: 3,
+            max: 8,
+            message: '密码长度在3到8之间',
+            trigger: 'blur',
+          },
+        ],
+      },
     }
   },
   methods: {
@@ -55,15 +80,15 @@ export default {
         }
       })
       this.isLoading = !this.isLoading
-    }
-  }
+    },
+  },
 }
 </script>
 <style lang="scss" scoped>
 .login {
   height: 100vh;
   width: 100vw;
-  background-image: url("@/assets/bgc.jpg");
+  background-image: url('@/assets/bgc.jpg');
   background-size: 100% 100%;
 }
 .login_in {

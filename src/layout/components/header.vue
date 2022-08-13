@@ -9,9 +9,19 @@
         <div class="right">
           <el-breadcrumb separator="/">
             <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-            <el-breadcrumb-item v-for="(item,index) in matched" :key="index">
-              <span v-if="item.redirect==='noRedirect'||index==matched.length-1">{{item.meta.title}}</span>
-              <span v-else @click="goPath(item)" :class="$route.fullPath===item.path?'active':''">{{item.meta.title}}</span>
+            <el-breadcrumb-item v-for="(item, index) in matched" :key="index">
+              <span
+                v-if="
+                  item.redirect === 'noRedirect' || index == matched.length - 1
+                "
+                >{{ item.meta.title }}</span
+              >
+              <span
+                v-else
+                @click="goPath(item)"
+                :class="$route.fullPath === item.path ? 'active' : ''"
+                >{{ item.meta.title }}</span
+              >
             </el-breadcrumb-item>
           </el-breadcrumb>
         </div>
@@ -25,17 +35,17 @@ import { mapGetters, mapActions } from 'vuex'
 import pathToRegexp from 'path-to-regexp'
 export default {
   computed: {
-    ...mapGetters(['sidebar'])
+    ...mapGetters(['sidebar']),
   },
   data() {
     return {
-      matched: []
+      matched: [],
     }
   },
   watch: {
     $route(route) {
-      this.getBreadcrumb()
-    }
+      // this.getBreadcrumb()
+    },
   },
   created() {
     this.getBreadcrumb()
@@ -43,7 +53,9 @@ export default {
   methods: {
     ...mapActions('sidebar', ['toggleSidebar']),
     getBreadcrumb() {
-      let matched = this.$route.matched.filter(item => item.meta && item.meta.title)
+      let matched = this.$route.matched.filter(
+        (item) => item.meta && item.meta.title
+      )
       // if (matched.length <= 0) {
       //   matched = [{ path: '/', meta: { title: '首页' } }].concat(matched)
       // }
@@ -67,7 +79,10 @@ export default {
     },
     goPath(item) {
       console.log(item.path, this.matched)
-      if (this.$route.fullPath === item.path && item.path === this.matched[0].path) {
+      if (
+        this.$route.fullPath === item.path &&
+        item.path === this.matched[0].path
+      ) {
         return
       }
       const { redirect, path } = item
@@ -76,8 +91,8 @@ export default {
         return
       }
       this.$router.push(this.pathCompile(path))
-    }
-  }
+    },
+  },
 }
 </script>
 <style scoped>

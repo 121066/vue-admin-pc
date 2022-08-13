@@ -12,7 +12,7 @@ export const Home = [
     children: [
       {
         path: 'table',
-        component: () => import('@/pages/table/index.vue'),
+        component: (resolve) => require(['@/pages/table/index.vue'], resolve),
         name: 'table',
         meta: {
           title: '表格',
@@ -38,8 +38,8 @@ export const Home = [
         },
       },
       {
-        path: '/projectlist',
-        name: 'projectlist',
+        path: '/projectlists',
+        name: 'projectlists',
         component: () => import('@/pages/projectList/index'),
         hidden: true,
       },

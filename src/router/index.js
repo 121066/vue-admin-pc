@@ -16,6 +16,8 @@ export const adminRouter = [
       },
     ],
   },
+  ...Home,
+  ...admin,
   {
     path: '/login',
     component: () => import('@/pages/login/index'),
@@ -23,8 +25,10 @@ export const adminRouter = [
   },
 ]
 export const routerPath = [...Home, ...admin]
-const router = new Router({
-  scrollBehavior: () => ({ y: 0 }),
-  routes: adminRouter.concat(routerPath),
-})
+const createRouter = () =>
+  new Router({
+    scrollBehavior: () => ({ y: 0 }),
+    routes: adminRouter,
+  })
+const router = createRouter()
 export default router

@@ -1,11 +1,29 @@
 <template>
-  <div class="sidebar" :class="classObj" :style="{'width':sidebar?'54px':'200px'}">
+  <div
+    class="sidebar"
+    :class="classObj"
+    :style="{ width: sidebar ? '54px' : '200px' }"
+  >
     <!-- logo区域 -->
     <!-- :background-color="variables.menuBg"  -->
     <Logo />
     <el-scrollbar wrap-class="scrollbar-wrapper">
-      <el-menu background-color="#304156" :default-active="activeMenu" :collapse="sidebar" text-color="#bfcbd9" :unique-opened="true" active-text-color="#409EFF" :collapse-transition="true" mode="vertical">
-        <sidebar-item v-for="route in getRout" :key="route.path" :item="route" :base-path="route.path" />
+      <el-menu
+        background-color="#304156"
+        :default-active="activeMenu"
+        :collapse="sidebar"
+        text-color="#bfcbd9"
+        :unique-opened="true"
+        active-text-color="#409EFF"
+        :collapse-transition="true"
+        mode="vertical"
+      >
+        <sidebar-item
+          v-for="route in getRout"
+          :key="route.path"
+          :item="route"
+          :base-path="route.path"
+        />
       </el-menu>
     </el-scrollbar>
   </div>
@@ -17,7 +35,7 @@ import sidebarItem from './sidebarItem.vue'
 export default {
   components: {
     Logo,
-    sidebarItem
+    sidebarItem,
   },
   computed: {
     ...mapGetters(['getRout', 'sidebar']),
@@ -31,24 +49,21 @@ export default {
     },
     classObj() {
       return {
-        hideSidebar: this.sidebar
+        hideSidebar: this.sidebar,
       }
-    }
+    },
   },
   data() {
-    return {
-
-    }
+    return {}
   },
+  watch: {},
   methods: {
-    ...mapActions('permission', ['generateRoutes'])
+    ...mapActions('permission', ['generateRoutes']),
   },
-  created() {
-    // console.log(this.getRout, '????')
-  },
+  created() {},
   mounted() {
     // console.log(this.router_s, '??路由')
-  }
+  },
 }
 </script>
 <style lang="scss" scoped>

@@ -1,14 +1,12 @@
 <template>
-  <div>新增用户</div>
+  <div>新增用123户</div>
 </template>
 <script>
 export default {
+  name: 'adduser',
   data() {
-    return {
-
-    }
-  }
+    return {}
+  },
 }
 </script>
-<style scoped>
-</style>
+<style scoped></style>

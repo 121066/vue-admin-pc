@@ -1,13 +1,15 @@
 <template>
   <div class="wrapper">
     <div class="container" :class="classObj">
-      <div class="sidebar-container" :style="{'width':sidebar?'54px':'200px'}">
+      <div
+        class="sidebar-container"
+        :style="{ width: sidebar ? '54px' : '200px' }"
+      >
         <sidebar></sidebar>
       </div>
       <div class="main">
         <Header></Header>
-        <Main>
-        </Main>
+        <Main> </Main>
       </div>
     </div>
   </div>
@@ -24,26 +26,27 @@ export default {
       return {
         hideSidebar: this.sidebar,
       }
-    }
+    },
   },
   components: {
     sidebar,
     Header,
-    Main
+    Main,
   },
   name: 'Layout',
   data() {
-    return {
-
-    }
+    return {}
   },
   created() {
-    console.log(this.$route, '路由模块')
-  }
+    // console.log(this.$route, '路由模块')
+  },
+  watch: {
+    $route(route) {},
+  },
 }
 </script>
-<style lang="scss"  scoped>
-@import "../style/sidebar.scss";
+<style lang="scss" scoped>
+@import '../style/sidebar.scss';
 .wrapper {
   position: relative;
   height: 100vh;
