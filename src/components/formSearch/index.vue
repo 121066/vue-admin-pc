@@ -1,7 +1,7 @@
 <template>
   <div class="form-search">
     <el-row :gutter="10">
-      <template v-for="item in opts">
+      <template v-for="item in opt">
         <el-col :span="6" :key="item.key">
           <el-row class="e_row" v-if="item.type === 'input'">
             <el-col :span="8"
@@ -108,10 +108,10 @@
             </el-col>
           </el-row>
           <el-row class="e_row" v-if="item.type === 'daterange'">
-            <el-col :span="8"
+            <el-col :span="5"
               ><label>{{ item.label }}:</label></el-col
             >
-            <el-col :span="16">
+            <el-col :span="8">
               <el-date-picker
                 v-model="searchForm[item.key]"
                 type="daterange"
@@ -164,7 +164,11 @@ export default {
     return {
       isshow: false,
       searchForm: {},
+      opt: [],
     }
+  },
+  created() {
+    this.opt = JSON.parse(JSON.stringify(this.opts))
   },
   methods: {
     search() {
@@ -174,6 +178,7 @@ export default {
       this.searchForm = {}
       this.$emit('formSearch', this.searchForm)
     },
+    handleSelectFocus(item) {},
   },
 }
 </script>

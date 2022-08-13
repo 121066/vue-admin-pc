@@ -80,7 +80,6 @@ export default {
         } else {
           // Temp set(will be used if only has one showing child)
           this.onlyOneChild = item
-          console.log(this.resolvePath(item.path), '???lu')
           return true
         }
       })

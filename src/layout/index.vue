@@ -7,10 +7,16 @@
       >
         <sidebar></sidebar>
       </div>
-      <div class="main">
+      <el-container>
+        <el-main>
+          <Header></Header>
+          <Main> </Main>
+        </el-main>
+      </el-container>
+      <!-- <div class="main">
         <Header></Header>
         <Main> </Main>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -50,24 +56,31 @@ export default {
 .wrapper {
   position: relative;
   height: 100vh;
-  width: 100%;
-  overflow: hidden;
 }
 .container {
   // min-height: calc(100vh - 84px);
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
-.sidebar {
+.sidebar-container {
+  width: 200px;
 }
 .main {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  flex: 1;
+  // display: flex;
+  // flex-direction: column;
+  // height: 100%;
+  // flex: 1;
+  // overflow: hidden;
+  // box-sizing: border-box;
+  // padding: 20px;
 }
-::v-deep .el-header {
-  padding: 0;
+// ::v-deep .el-header {
+//   padding: 0;
+// }
+::v-deep .el-main {
+  padding: 5px;
 }
 </style>

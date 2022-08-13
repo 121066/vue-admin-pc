@@ -44,7 +44,7 @@ export default {
   },
   watch: {
     $route(route) {
-      // this.getBreadcrumb()
+      this.getBreadcrumb()
     },
   },
   created() {
@@ -78,19 +78,19 @@ export default {
       return toPath(params)
     },
     goPath(item) {
-      console.log(item.path, this.matched)
-      if (
-        this.$route.fullPath === item.path &&
-        item.path === this.matched[0].path
-      ) {
-        return
-      }
+      // console.log(item.path, this.matched)
+      // if (
+      //   this.$route.fullPath === item.path &&
+      //   item.path === this.matched[0].path
+      // ) {
+      //   return
+      // }
       const { redirect, path } = item
-      if (redirect) {
-        this.$router.push(redirect)
-        return
-      }
-      this.$router.push(this.pathCompile(path))
+      // if (redirect) {
+      //   this.$router.push(redirect)
+      //   return
+      // }
+      this.$router.push(path)
     },
   },
 }
@@ -98,12 +98,13 @@ export default {
 <style scoped>
 .app-header {
   height: 50px;
-  overflow: hidden;
-  position: relative;
+  flex: 1;
+  /* overflow: hidden; */
+  /* position: relative; */
   background: #fff;
   -webkit-box-shadow: 0 1px 4px rgb(0 21 41 / 8%);
   box-shadow: 0 1px 4px rgb(0 21 41 / 8%);
-  top: 0;
+  /* top: 0; */
   line-height: 50px;
   padding: 2px 0;
 }
