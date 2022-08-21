@@ -38,6 +38,15 @@ export const Home = [
         },
       },
       {
+        path: 'editor',
+        component: () => import('@/pages/editor'),
+        name: 'editor',
+        meta: {
+          title: '富文本',
+          icon: 'el-icon-s-order',
+        },
+      },
+      {
         path: '/projectlists',
         name: 'projectlists',
         component: () => import('@/pages/projectList/index'),

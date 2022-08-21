@@ -26,7 +26,7 @@ export default {
   /* overflow: hidden; */
   /* min-height: calc(100vh- 50px); */
 
-  height: 100vh;
+  /* height: 100vh; */
   background-color: #f0f2f5;
   box-sizing: border-box;
 }
