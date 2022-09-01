@@ -21,12 +21,13 @@ export default {
 </script>
 <style scoped>
 .app-main {
-  padding: 20px;
+  /* padding: 10px; */
   /* position: relative; */
   /* overflow: hidden; */
   /* min-height: calc(100vh- 50px); */
-
+  height: 100%;
   /* height: 100vh; */
+  padding: 15px;
   background-color: #f0f2f5;
   box-sizing: border-box;
 }

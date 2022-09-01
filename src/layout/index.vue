@@ -14,9 +14,13 @@
                  
         </el-aside>
 
-        <el-main>
-          <Header></Header>
-          <Main> </Main>
+        <el-main class="main">
+          <div class="main_hd">
+            <Header></Header>
+          </div>
+          <div class="main_content">
+            <Main> </Main>
+          </div>
         </el-main>
       </el-container>
       <!-- <div class="main">
@@ -75,10 +79,10 @@ export default {
   width: 200px;
 }
 .main {
-  // display: flex;
-  // flex-direction: column;
-  // height: 100%;
-  // flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1;
   // overflow: hidden;
   // box-sizing: border-box;
   // padding: 20px;
@@ -91,5 +95,15 @@ export default {
 }
 ::v-deep .el-aside {
   transition: 0.5s ease-in;
+}
+.main_hd {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 110;
+}
+.main_content {
+  flex: 1;
+  padding-top: 50px;
 }
 </style>

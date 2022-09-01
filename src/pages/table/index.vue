@@ -94,7 +94,8 @@ export default {
   /* margin: 20px; */
   /* background: #fff; */
   overflow: hidden;
-  height: 100%;
+  /* height: 100%; */
+  /* padding: 10px; */
 }
 .green {
   color: greenyellow;
