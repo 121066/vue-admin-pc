@@ -1,0 +1,28 @@
+{
+  "code": 0,
+  "data": {
+    "projectClassificationList": [
+      { "id": 1, "name": "市级" },
+      { "id": 2, "name": "区级" },
+      { "id": 3, "name": "街道" },
+      { "id": 4, "name": "技改" },
+      { "id": 5, "name": "政府投资" },
+      { "id": 6, "name": "民生实事" }
+    ],
+    "projectCategoryList": [
+      { "id": 1, "name": "制造业" },
+      { "id": 2, "name": "现代服务业" },
+      { "id": 3, "name": "房产开发" },
+      { "id": 4, "name": "社会事业" }
+    ],
+    "projectConstructionNatureList": [
+      { "id": 1, "name": "新建" },
+      { "id": 2, "name": "续建" }
+    ],
+    "projectInvestmentTypeList": [
+      { "id": 1, "name": "社会投资" },
+      { "id": 2, "name": "政府投资" }
+    ]
+  },
+  "msg": "执行成功"
+}

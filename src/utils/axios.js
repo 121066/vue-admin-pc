@@ -20,13 +20,14 @@ request.interceptors.request.use(
 )
 request.interceptors.response.use(
   (resopnse) => {
-    if (resopnse.data.code !== 0) {
-      Message.error(`请求失败${response.data.msg || resopnse.data.message}`)
-    } else {
-      return new Promise.resolve((resolve, reject) => {
-        resolve(response.data)
-      })
-    }
+    // if (resopnse.data.code !== 0) {
+    //   Message.error(`请求失败${response.data.msg || resopnse.data.message}`)
+    // } else {
+    //   return new Promise.resolve((resolve, reject) => {
+    //     resolve(response.data)
+    //   })
+    // }
+    return resopnse.data
   },
   (error) => {
     if (axios.isCancel(error)) {

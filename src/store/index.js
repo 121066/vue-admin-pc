@@ -12,10 +12,12 @@ import getters from './getters'
 // }, {})
 import permission from './modules/permission'
 import sidebar from './modules/sidebar'
+import keyProject from './modules/keyProject'
 const store = new Vuex.Store({
   modules: {
     permission,
     sidebar,
+    keyProject,
   },
   getters,
 })

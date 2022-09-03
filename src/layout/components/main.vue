@@ -1,10 +1,12 @@
 <template>
-  <div class="app-main">
-    <transition name="fade-transform" mode="out-in">
-      <keep-alive :include="[]">
-        <router-view :key="key"></router-view>
-      </keep-alive>
-    </transition>
+  <div class="content">
+    <div class="app-main">
+      <transition name="fade-transform" mode="out-in">
+        <keep-alive :include="[]">
+          <router-view :key="key"></router-view>
+        </keep-alive>
+      </transition>
+    </div>
   </div>
 </template>
 <script>
@@ -20,6 +22,10 @@ export default {
 }
 </script>
 <style scoped>
+.content {
+  background-color: #f0f2f5;
+  padding: 10px;
+}
 .app-main {
   /* padding: 10px; */
   /* position: relative; */
@@ -28,7 +34,8 @@ export default {
   height: 100%;
   /* height: 100vh; */
   padding: 15px;
-  background-color: #f0f2f5;
+  /* background-color: #f0f2f5; */
+  background-color: #fff;
   box-sizing: border-box;
 }
 

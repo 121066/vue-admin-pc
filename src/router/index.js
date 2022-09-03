@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Layout from '@/layout/index.vue'
 import { admin } from './modules/admin'
 import { Home } from './modules/home'
+import { keyProject } from './modules/keyProject'
 Vue.use(Router)
 export const adminRouter = [
   {
@@ -22,7 +23,7 @@ export const adminRouter = [
     hidden: true,
   },
 ]
-export const routerPath = [...Home, ...admin]
+export const routerPath = [...Home, ...admin, ...keyProject]
 const createRouter = () =>
   new Router({
     scrollBehavior: () => ({ y: 0 }),
