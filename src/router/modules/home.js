@@ -52,6 +52,15 @@ export const Home = [
         component: () => import('@/pages/projectList/index'),
         hidden: true,
       },
+      {
+        path: '/list',
+        name: 'list',
+        component: () => import('@/pages/list/index'),
+        meta: {
+          title: '列表滚动',
+          icon: 'el-icon-s-order',
+        },
+      },
     ],
   },
 ]

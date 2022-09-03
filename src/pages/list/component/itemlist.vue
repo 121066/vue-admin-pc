@@ -35,7 +35,13 @@ function throttle(time, fn) {
   }
 }
 export default {
-  name: 'project',
+  name: 'itemlist',
+  props: {
+    data: {
+      type: Array,
+      default: () => [],
+    },
+  },
   data() {
     return {
       len: 1,
@@ -44,11 +50,7 @@ export default {
   },
   computed: {
     dataList() {
-      let list = []
-      for (let index = 0; index < 30; index++) {
-        list.push({ name: `${index}奥林老师`, id: index })
-      }
-      return list
+      return JSON.parse(JSON.stringify(this.data))
     },
     top() {
       return -this.len * 45 + 'px'
@@ -77,13 +79,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.project {
-  padding: 15px;
-  /* margin: 35px 15px; */
-  background: #0000cd;
-  height: 100%;
-  display: flex;
-}
 .scroll {
   flex: 1;
   /* width: 100%; */
