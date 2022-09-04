@@ -1,20 +1,18 @@
 <template>
-  <div class="project">
-    <div class="scroll">
+  <div class="scroll">
+    <div
+      :class="len === 1 ? 'item_list' : 'item_list am'"
+      :style="{ top: top }"
+    >
       <div
-        :class="len === 1 ? 'item_list' : 'item_list am'"
-        :style="{ top: top }"
+        class="item"
+        v-for="(item, index) in dataList"
+        :key="index"
+        @mouseleave="move"
+        @mouseenter="seup"
+        @mousemove="moves"
       >
-        <div
-          class="item"
-          v-for="(item, index) in dataList"
-          :key="index"
-          @mouseleave="move"
-          @mouseenter="seup"
-          @mousemove="moves"
-        >
-          我的{{ item.name }} 点赞{{ item.id }}
-        </div>
+        我的{{ item.name }} 点赞{{ item.id }}
       </div>
     </div>
   </div>
@@ -80,14 +78,16 @@ export default {
 </script>
 <style lang="scss" scoped>
 .scroll {
-  flex: 1;
-  /* width: 100%; */
-  height: 400px;
-  overflow: auto;
+  // flex: 1;
+  width: 50%;
+  height: 300px;
+  // overflow: auto;
   margin: 0 auto;
   border: 1px solid #fff;
   padding: 0 10px;
   position: relative;
+  overflow-x: auto;
+  overflow-y: auto;
   .item_list {
     position: absolute;
     top: -100px;
