@@ -20,6 +20,16 @@ export const Home = [
         },
       },
       {
+        path: '/margeTable',
+        component: (resolve) =>
+          require(['@/pages/margeTable/index.vue'], resolve),
+        name: 'margeTable',
+        meta: {
+          title: '合并表格',
+          icon: 'el-icon-tickets',
+        },
+      },
+      {
         path: 'project',
         component: () => import('@/pages/project'),
         name: 'project',
