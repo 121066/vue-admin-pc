@@ -56,6 +56,7 @@ export default {
 }
 .box {
   height: 300px;
+  overflow: hidden;
 }
 .list {
   padding: 0 10px;

@@ -71,6 +71,15 @@ export const Home = [
           icon: 'el-icon-s-order',
         },
       },
+      {
+        path: '/select',
+        name: 'select',
+        component: () => import('@/pages/select/index'),
+        meta: {
+          title: '自适应选择',
+          icon: 'el-icon-s-order',
+        },
+      },
     ],
   },
 ]
