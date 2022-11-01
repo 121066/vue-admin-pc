@@ -21,6 +21,10 @@ export default {
       default: 1,
       type: Number,
     },
+    scrollHieght: {
+      type: Number,
+      default: 0,
+    },
   },
   computed: {
     //第一个slot
@@ -39,6 +43,12 @@ export default {
       height: 0,
       isScrollShow: true,
     }
+  },
+  watch: {
+    scrollHieght(e) {
+      console.log(e, '变化的高度')
+      this.start(e - this.height)
+    },
   },
   methods: {
     //鼠标移入停止滚动 移出继续滚动

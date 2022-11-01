@@ -60,15 +60,16 @@ export default {
   position: relative;
   text-align: center;
 }
-.active_select >>> .el-input__inner {
-  color: #7d97f9 !important;
-}
+
 ::v-deep input {
   position: absolute;
   left: 0;
 }
-::v-deep .el-select-dropdown {
-  border: none;
-  color: #fff;
-}
+// .active_select >>> .el-input__inner {
+//   color: #7d97f9 !important;
+// }
+// ::v-deep .el-select-dropdown {
+//   border: none;
+//   color: #fff;
+// }
 </style>

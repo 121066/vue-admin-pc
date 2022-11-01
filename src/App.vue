@@ -12,6 +12,29 @@ export default {
   components: {
     // HelloWorld
   },
+  deleted() {
+    window.onresize = null
+  },
+  methods: {
+    handleScreen() {
+      const w = 1920
+      const h = 960
+      const scale =
+        document.documentElement.clientWidth /
+          document.documentElement.clientHeight <
+        w / h
+          ? document.documentElement.clientWidth / w
+          : document.documentElement.clientHeight / h
+      //缩放比例
+      document.querySelector(
+        '#app'
+      ).style.transform = `scale(${scale}) translate(-50%)`
+    },
+  },
+  mounted() {
+    // this.handleScreen()
+    // window.onresize = () => this.handleScreen()
+  },
 }
 </script>
 

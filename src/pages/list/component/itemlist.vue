@@ -100,12 +100,15 @@ export default {
     height: 45px;
     line-height: 45px;
     font-size: 13px;
-    color: #fff;
+    // color: #fff;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
   .item:hover {
     background: #eee;
     color: #19197d;
   }
+}
+::-webkit-scrollbar {
+  display: none;
 }
 </style>
