@@ -21,42 +21,42 @@
 </template>
 <script>
 function throttle(time, fn) {
-  let times = null
+  let times = null;
   return function () {
-    let that = this
-    let ars = arguments
+    let that = this;
+    let ars = arguments;
     if (times) {
-      clearTimeout(times)
+      clearTimeout(times);
     }
     times = setTimeout(() => {
-      times = null
-      fn.apply(that, ars)
-    }, time)
-  }
+      times = null;
+      fn.apply(that, ars);
+    }, time);
+  };
 }
 export default {
-  name: 'project',
+  name: "project",
   data() {
     return {
       len: 1,
       time: null,
-    }
+    };
   },
   computed: {
     dataList() {
-      let list = []
+      let list = [];
       for (let index = 0; index < 30; index++) {
-        list.push({ name: `${index}奥林老师`, id: index })
+        list.push({ name: `${index}奥林老师`, id: index });
       }
-      return list
+      return list;
     },
     top() {
-      return -this.len * 45 + 'px'
+      return -this.len * 45 + "px";
     },
   },
   methods: {
     moves: throttle(1500, function () {
-      this.setTop()
+      this.setTop();
     }),
     move(e) {},
     seup(e) {},
@@ -64,23 +64,21 @@ export default {
     getScorll() {
       this.time = setInterval(() => {
         if (this.dataList.length - 1 > this.len) {
-          this.len++
+          this.len++;
         } else {
-          this.len = 1
+          this.len = 1;
         }
-      }, 1500)
+      }, 1500);
     },
   },
   mounted() {
-    this.getScorll()
+    this.getScorll();
   },
-}
+};
 </script>
 <style lang="scss" scoped>
 .project {
   padding: 15px;
-  /* margin: 35px 15px; */
-  background: #0000cd;
   height: 100%;
   display: flex;
 }
@@ -105,8 +103,8 @@ export default {
     height: 45px;
     line-height: 45px;
     font-size: 13px;
-    color: #fff;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #000;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   }
   .item:hover {
     background: #eee;
