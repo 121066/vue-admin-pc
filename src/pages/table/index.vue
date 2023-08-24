@@ -1,5 +1,31 @@
 <template>
   <div class="table">
+    <el-table :data="[{ name: '你好' }]">
+      <el-table-column label="测试气泡" prop="name">
+        <template slot-scope="scope">
+          <el-popover
+            placement="top"
+            :visible-arrow="true"
+            popper-class="db-popover"
+            :offset="popoverSet"
+            title="标题"
+            width="200"
+            trigger="click"
+            transition="fade-in-linear"
+            :style="objStyle"
+            content="这是一段内容,这是一段内容,这是一段内容,这是一段内容。"
+          >
+            <div
+              slot="reference"
+              @click="dbPopover($event, this)"
+              class="reference"
+            >
+              {{ scope.row.name }}
+            </div>
+          </el-popover>
+        </template>
+      </el-table-column>
+    </el-table>
     <formSearch :opts="opts"></formSearch>
     <div>
       <el-button type="primary" size="small" @click="allExpansion"
@@ -87,8 +113,18 @@ export default {
   components: {
     formSearch,
   },
-  data() {
+  computed: {
+    objStyle () {
+      return {
+        left: this.left + 'px'
+      }
+    }
+  },
+  data () {
     return {
+      popoverFlag: false,
+      left: 550,
+      popoverSet: 200,
       refTable: true,
       allTable: false,
       opts: [
@@ -127,7 +163,7 @@ export default {
   },
   methods: {
     // 全部收起
-    allPack() {
+    allPack () {
       this.allTable = false;
       this.refTable = false;
       this.$nextTick(() => {
@@ -135,7 +171,7 @@ export default {
       });
     },
     // 全部展开
-    allExpansion() {
+    allExpansion () {
       this.allTable = true;
       this.refTable = false;
       this.$nextTick(() => {
@@ -143,7 +179,7 @@ export default {
       });
     },
     // 全部展开方案2
-    allExpansions() {
+    allExpansions () {
       const list = document.querySelectorAll(".el-table__expand-icon");
       for (let i = 0; i < list.length; i++) {
         if (!list[i].className.includes("el-table__expand-icon--expanded")) {
@@ -154,7 +190,7 @@ export default {
       }
     },
     // 全部收起方案2
-    allPacks() {
+    allPacks () {
       const list = document.querySelectorAll(".el-table__expand-icon");
       for (let i = 0; i < list.length; i++) {
         if (!list[i].className.includes("el-table__expand-icon--expanded")) {
@@ -164,6 +200,44 @@ export default {
         }
       }
     },
+    // 气泡跟随
+    async dbPopover (e, obj) {
+      const dbpopover = document.querySelector('.db-popover')
+      // console.log(e)
+      const { offsetX, clientX, offsetLeft } = e
+      this.popoverSet = 0
+      // dbpopover.style.left = 0
+      const i = 550 - clientX
+      const i1 = 550 - offsetX
+      // dbpopover.offsetLeft;
+      const x = offsetX + 120
+      // dbpopover.style.left = (offsetX + 120) + 'px'
+      this.left = x
+      console.log(this.objStyle)
+
+      // dbpopover.style.transform = `translateX(${-x}px)`
+      if (!this.popoverFlag) {
+        setTimeout(() => {
+          dbpopover.style.left = (offsetX + 120) + 'px'
+
+        }, 0)
+      }
+      this.popoverFlag = !this.popoverFlag
+      // let X = await this.dely(offsetX, 120)
+      // dbpopover.style.left = (X) + 'px'
+      // this.popoverFlag = true
+      this.$nextTick(() => {
+        // dbpopover.style.left = (offsetX + 120) + 'px'
+        // this.popoverFlag = !this.popoverFlag
+      })
+      console.log(offsetX, clientX, i, i1)
+      console.log(e,)
+      console.log(obj, '>><<')
+      console.log(offsetLeft)
+    },
+    dely (x, n) {
+      return x + n
+    }
   },
 };
 </script>
@@ -180,5 +254,8 @@ export default {
 }
 .red {
   color: red;
+}
+.reference {
+  position: relative;
 }
 </style>
