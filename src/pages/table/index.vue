@@ -224,7 +224,7 @@ export default {
 
         // }, 0)
         function init (params) {
-          dbpopover.style.left = (n) + 'px'
+          dbpopover.style.left = (offsetX + 120) + 'px'
         }
         requestAnimationFrame(init)
 
