@@ -217,10 +217,17 @@ export default {
 
       // dbpopover.style.transform = `translateX(${-x}px)`
       if (!this.popoverFlag) {
-        setTimeout(() => {
-          dbpopover.style.left = (offsetX + 120) + 'px'
+        let n = await this.dely(offsetX, 120)
+        console.log(n)
+        // setTimeout(() => {
+        //   dbpopover.style.left = (offsetX + 120) + 'px'
 
-        }, 0)
+        // }, 0)
+        function init (params) {
+          dbpopover.style.left = (n) + 'px'
+        }
+        requestAnimationFrame(init)
+
       }
       this.popoverFlag = !this.popoverFlag
       // let X = await this.dely(offsetX, 120)
@@ -230,13 +237,15 @@ export default {
         // dbpopover.style.left = (offsetX + 120) + 'px'
         // this.popoverFlag = !this.popoverFlag
       })
-      console.log(offsetX, clientX, i, i1)
-      console.log(e,)
-      console.log(obj, '>><<')
-      console.log(offsetLeft)
+      // console.log(offsetX, clientX, i, i1)
+      // console.log(e,)
+      // console.log(obj, '>><<')
+      // console.log(offsetLeft)
     },
     dely (x, n) {
-      return x + n
+      return new Promise(reolve => {
+        reolve(x + n)
+      })
     }
   },
 };
