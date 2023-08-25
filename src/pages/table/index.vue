@@ -1,28 +1,31 @@
 <template>
   <div class="table">
-    <el-table :data="[{ name: '你好' }]">
+    <el-table :data="[{ name: '你好', id: '增加' }]">
       <el-table-column label="测试气泡" prop="name">
         <template slot-scope="scope">
           <el-popover
             placement="top"
             :visible-arrow="true"
             popper-class="db-popover"
-            :offset="popoverSet"
-            title="标题"
             width="200"
             trigger="click"
             transition="fade-in-linear"
-            :style="objStyle"
             content="这是一段内容,这是一段内容,这是一段内容,这是一段内容。"
           >
+            <div>我在这里</div>
             <div
               slot="reference"
-              @click="dbPopover($event, this)"
+              @click="dbPopover($event, true)"
               class="reference"
             >
               {{ scope.row.name }}
             </div>
           </el-popover>
+        </template>
+      </el-table-column>
+      <el-table-column label="列" prop="id">
+        <template slot-scope="scope">
+          <div @click="dbPopover($event, false)">{{ scope.row.id }}</div>
         </template>
       </el-table-column>
     </el-table>
@@ -201,46 +204,33 @@ export default {
       }
     },
     // 气泡跟随
-    async dbPopover (e, obj) {
+    async dbPopover (e, flag) {
       const dbpopover = document.querySelector('.db-popover')
-      // console.log(e)
+      if (!flag) return this.popoverFlag = false
       const { offsetX, clientX, offsetLeft } = e
-      this.popoverSet = 0
-      // dbpopover.style.left = 0
-      const i = 550 - clientX
-      const i1 = 550 - offsetX
-      // dbpopover.offsetLeft;
       const x = offsetX + 120
-      // dbpopover.style.left = (offsetX + 120) + 'px'
-      this.left = x
-      console.log(this.objStyle)
+      function init (params) {
+        dbpopover.style.left = (clientX - 120) + 'px'
+      }
 
-      // dbpopover.style.transform = `translateX(${-x}px)`
       if (!this.popoverFlag) {
-        let n = await this.dely(offsetX, 120)
-        console.log(n)
-        // setTimeout(() => {
-        //   dbpopover.style.left = (offsetX + 120) + 'px'
-
-        // }, 0)
-        function init (params) {
-          dbpopover.style.left = (offsetX + 120) + 'px'
-        }
+        // let n = await this.dely(offsetX, 120)
+        // function init (params) {
+        //   dbpopover.style.left = (clientX - 120) + 'px'
+        // }
+        // requestAnimationFrame(init)
         requestAnimationFrame(init)
 
+      } else {
+        // function init (params) {
+        //   dbpopover.style.left = (-1000) + 'px'
+        // }
+        // requestAnimationFrame(init)
+        // this.popoverFlag = !this.popoverFlag
       }
       this.popoverFlag = !this.popoverFlag
-      // let X = await this.dely(offsetX, 120)
-      // dbpopover.style.left = (X) + 'px'
-      // this.popoverFlag = true
-      this.$nextTick(() => {
-        // dbpopover.style.left = (offsetX + 120) + 'px'
-        // this.popoverFlag = !this.popoverFlag
-      })
-      // console.log(offsetX, clientX, i, i1)
-      // console.log(e,)
-      // console.log(obj, '>><<')
-      // console.log(offsetLeft)
+
+
     },
     dely (x, n) {
       return new Promise(reolve => {
