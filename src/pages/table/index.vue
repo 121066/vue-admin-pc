@@ -1,6 +1,7 @@
 <template>
   <div class="table">
-    <el-table :data="[{ name: '你好', id: '增加' }]">
+    <h2>表格自定义气泡位置</h2>
+    <el-table border :data="[{ name: '你好', id: '增加' }]">
       <el-table-column label="测试气泡" prop="name">
         <template slot-scope="scope">
           <el-popover
@@ -30,6 +31,7 @@
       </el-table-column>
     </el-table>
     <formSearch :opts="opts"></formSearch>
+    <h2>表格自定义展开和收起</h2>
     <div>
       <el-button type="primary" size="small" @click="allExpansion"
         >全部展开</el-button
@@ -106,6 +108,58 @@
       </el-table-column>
       <el-table-column prop="lingXiCollectTime" label="采样时间(市级)" />
     </el-table>
+    <h2>表格自定义展开箭头图表</h2>
+    <div class="expand">
+      <el-table
+        border
+        :data="dataList"
+        :expand-row-keys="expands"
+        row-key="idCard"
+      >
+        <el-table-column type="expand" width="1">
+          <template slot-scope="scope">
+            <div>{{ scope.row.sourceName }}</div>
+            <div>{{ scope.row.streetName }}</div>
+          </template>
+        </el-table-column>
+        <el-table-column
+          prop="sourceName"
+          label="人员类型"
+          show-overflow-tooltip
+        >
+          <template slot-scope="scope">
+            <span>
+              <i
+                class="el-icon el-icon-caret-right icon_color"
+                :class="[
+                  {
+                    'el-table__expand-icon--expanded':
+                      expandsObj[scope.row.idCard],
+                  },
+                ]"
+                @click="setExpand(scope.row)"
+              ></i>
+              {{ scope.row.sourceName }}
+            </span>
+          </template>
+        </el-table-column>
+        <el-table-column
+          prop="streetName"
+          label="所属街道"
+          show-overflow-tooltip
+        />
+        <el-table-column
+          prop="communityName"
+          label="所属社区"
+          show-overflow-tooltip
+        />
+        <el-table-column
+          prop="managementMeasuresName"
+          label="管理措施"
+          show-overflow-tooltip
+        />
+      </el-table>
+    </div>
   </div>
 </template>
 <script>
@@ -125,6 +179,8 @@ export default {
   },
   data () {
     return {
+      expands: [],
+      expandsObj: {},
       popoverFlag: false,
       left: 550,
       popoverSet: 200,
@@ -236,11 +292,23 @@ export default {
       return new Promise(reolve => {
         reolve(x + n)
       })
+    },
+    // 展开
+    setExpand (item) {
+      const { idCard } = item
+      if (!this.expands.includes(idCard)) {
+        this.expands.push(idCard)
+        this.expandsObj[idCard] = true
+      } else {
+        const index = this.expands.indexOf(idCard)
+        this.expands.splice(index, 1)
+        this.expandsObj[idCard] = false
+      }
     }
   },
 };
 </script>
-<style scoped>
+<style scoped lang="scss">
 .table {
   /* margin: 20px; */
   /* background: #fff; */
@@ -256,5 +324,13 @@ export default {
 }
 .reference {
   position: relative;
+}
+.icon_color {
+  cursor: pointer;
+}
+.expand {
+  ::v-deep .el-table__expand-icon {
+    opacity: 0;
+  }
 }
 </style>
