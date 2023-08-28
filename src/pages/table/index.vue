@@ -112,7 +112,7 @@
     <div class="expand">
       <el-table
         border
-        :data="dataList"
+        :data="dataExpand"
         :expand-row-keys="expands"
         row-key="idCard"
       >
@@ -175,6 +175,9 @@ export default {
       return {
         left: this.left + 'px'
       }
+    },
+    dataExpand () {
+      return this.dataList.slice(6, 10)
     }
   },
   data () {
@@ -220,6 +223,7 @@ export default {
       },
     };
   },
+
   methods: {
     // 全部收起
     allPack () {
