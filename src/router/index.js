@@ -1,33 +1,34 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Layout from '@/layout/index.vue'
-import { admin } from './modules/admin'
-import { Home } from './modules/home'
-import { keyProject } from './modules/keyProject'
-Vue.use(Router)
+import Layout from "@/layout/index.vue";
+import Vue from "vue";
+import Router from "vue-router";
+import { admin } from "./modules/admin";
+import { chart } from "./modules/chart";
+import { Home } from "./modules/home";
+import { keyProject } from "./modules/keyProject";
+Vue.use(Router);
 export const adminRouter = [
   {
-    path: '/',
+    path: "/",
     component: Layout,
-    redirect: '/home',
+    redirect: "/home",
     children: [
       {
-        path: 'home',
-        component: () => import('@/pages/home/index'),
+        path: "home",
+        component: () => import("@/pages/home/index"),
       },
     ],
   },
   {
-    path: '/login',
-    component: () => import('@/pages/login/index'),
+    path: "/login",
+    component: () => import("@/pages/login/index"),
     hidden: true,
   },
-]
-export const routerPath = [...Home, ...admin, ...keyProject]
+];
+export const routerPath = [...Home, ...admin, ...keyProject, ...chart];
 const createRouter = () =>
   new Router({
     scrollBehavior: () => ({ y: 0 }),
     routes: adminRouter.concat(routerPath),
-  })
-const router = createRouter()
-export default router
+  });
+const router = createRouter();
+export default router;
