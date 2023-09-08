@@ -18,6 +18,14 @@ export const chart = [
           icon: "el-icon-grape",
         },
       },
+      {
+        path: "/chart/chartlabel",
+        component: () => import("@/pages/chart/chartLabel.vue"),
+        meta: {
+          title: "自定义插槽",
+          icon: "el-icon-grape",
+        },
+      },
     ],
   },
 ];
