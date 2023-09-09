@@ -5,7 +5,11 @@
       style="clear: both; border-bottom: 1px solid #efefef; height: 10px"
     ></div>
     <div style="height: calc(100vh - 300px)">
-      <relation-graph ref="seeksRelationGraph" :options="userGraphOptions">
+      <relation-graph
+        ref="seeksRelationGraph"
+        :options="userGraphOptions"
+        :on-line-click="onLineClick"
+      >
         <template slot="node" slot-scope="{ node }">
           <Slot1 :node="node" />
         </template>
@@ -31,6 +35,7 @@ export default {
         "defaultNodeBorderWidth": 0,
         "defaultNodeShape": 1,
         "defaultJunctionPoint": "tb",
+        allowSwitchLineShape: true,
         "layouts": [
           {
             "label": "中心",
@@ -214,6 +219,14 @@ export default {
       //     this.userGraphOptions.defaultNodeBorderColor = '#eeeeee';
       //     this.resetGraphOptions(this.userGraphOptions);
       //   }
+    },
+    onLineClick (lineObject, linkObject, $event) {
+      console.log('onLineClick:', lineObject);
+      this.$notify({
+        title: '点击连线：',
+        type: 'success',
+        message: '点击了线:' + linkObject.fromNode.text + ' to ' + linkObject.toNode.text
+      });
     }
   }
 };
