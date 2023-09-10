@@ -1,14 +1,6 @@
 <template>
   <div>
-    <div
-      style="
-        width: 200px;
-        height: 200px;
-        cursor: pointer;
-        text-align: left;
-        padding: 10px;
-      "
-    >
+    <div style="cursor: pointer; text-align: left; padding: 10px">
       <div style="border-bottom: #ffffff solid 1px">
         <i style="font-size: 12px" class="el-icon-user" /> 姓名：{{
           node.data.name

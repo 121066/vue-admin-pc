@@ -145,13 +145,13 @@ export default {
           }
         ]
       };
-      if (this.slotTeamplateId === 'slot6') {
-        Object.assign(__graph_json_data.nodes[0], { color: '#67C23A', borderColor: '#90EE90', nodeShape: 0, borderWidth: 5 });
-        Object.assign(__graph_json_data.nodes[1], { color: '#409EFF', borderColor: '#409EFF', nodeShape: 1, borderWidth: 1 });
-        Object.assign(__graph_json_data.nodes[2], { color: '', borderColor: '', nodeShape: 0, borderWidth: 0 });
-        Object.assign(__graph_json_data.nodes[3], { color: '#409EFF', borderColor: '#409EFF', nodeShape: 1, borderWidth: 1 });
-        Object.assign(__graph_json_data.nodes[4], { color: '', borderColor: '#409EFF', nodeShape: 0, borderWidth: 0 });
-      }
+      // if (this.slotTeamplateId === 'slot6') {
+      //   Object.assign(__graph_json_data.nodes[0], { color: '#67C23A', borderColor: '#90EE90', nodeShape: 0, borderWidth: 5 });
+      //   Object.assign(__graph_json_data.nodes[1], { color: '#409EFF', borderColor: '#409EFF', nodeShape: 1, borderWidth: 1 });
+      //   Object.assign(__graph_json_data.nodes[2], { color: '', borderColor: '', nodeShape: 0, borderWidth: 0 });
+      //   Object.assign(__graph_json_data.nodes[3], { color: '#409EFF', borderColor: '#409EFF', nodeShape: 1, borderWidth: 1 });
+      //   Object.assign(__graph_json_data.nodes[4], { color: '', borderColor: '#409EFF', nodeShape: 0, borderWidth: 0 });
+      // }
       console.log(this.slotTeamplateId, __graph_json_data);
       this.$refs.seeksRelationGraph.setJsonData(__graph_json_data, (graphInstance) => {
         // 这些写上当图谱初始化完成后需要执行的代码
@@ -168,7 +168,7 @@ export default {
     },
     setSlotTeamplate (slotTeamplateId) {
       this.slotTeamplateId = slotTeamplateId;
-      this.userGraphOptions.defaultNodeColor = '#409EFF';
+      // this.userGraphOptions.defaultNodeColor = '#409EFF';
       this.userGraphOptions.defaultNodeShape = 1;
       this.userGraphOptions.defaultNodeBorderWidth = 0;
       this.resetGraphOptions(this.userGraphOptions);
@@ -245,7 +245,7 @@ export default {
   border-top: #efefef solid 1px;
 }
 .c-node-menu-item:hover {
-  background-color: rgba(66, 187, 66, 0.2);
+  // background-color: rgba(66, 187, 66, 0.2);
 }
 .c-slot-teamplate {
   border: 1px solid #efefef;
@@ -260,7 +260,7 @@ export default {
   font-size: 12px;
 }
 .c-slot-teamplate:hover {
-  border: 1px solid #00bb00;
+  // border: 1px solid #00bb00;
 }
 .c-slot-teamplate-checked {
   border: 1px solid #409eff;
