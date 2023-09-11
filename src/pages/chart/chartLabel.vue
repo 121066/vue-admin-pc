@@ -120,6 +120,24 @@ export default {
               'name': '高育良',
               'myicon': 'el-icon-setting'
             }
+          },
+          {
+            'id': 'f1',
+            'text': 'f1',
+            'data': {
+              'pic': 'https://dss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3098576865,849900134&fm=58&app=83&f=JPEG?w=250&h=250&s=EDE01A63A65917DC104509920300C0C1',
+              'name': '高育良',
+              'myicon': 'el-icon-setting'
+            }
+          },
+          {
+            'id': 'f2',
+            'text': 'f2',
+            'data': {
+              'pic': 'https://dss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3098576865,849900134&fm=58&app=83&f=JPEG?w=250&h=250&s=EDE01A63A65917DC104509920300C0C1',
+              'name': '高育良',
+              'myicon': 'el-icon-setting'
+            }
           }
         ],
         'lines': [
@@ -142,6 +160,10 @@ export default {
           {
             'from': 'a',
             'to': 'f'
+          },
+          {
+            'from': 'f1',
+            'to': 'f2'
           }
         ]
       };
