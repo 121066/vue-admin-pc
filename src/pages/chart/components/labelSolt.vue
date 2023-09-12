@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="list">
     <div style="cursor: pointer; text-align: left; padding: 10px">
       <div style="border-bottom: #ffffff solid 1px">
         <i style="font-size: 12px" class="el-icon-user" /> 姓名：{{
@@ -39,6 +39,9 @@ export default {
 </style>
 
 <style lang="scss" scoped>
+.list {
+  background: burlywood;
+}
 .c-node-menu-item {
   line-height: 30px;
   padding-left: 10px;

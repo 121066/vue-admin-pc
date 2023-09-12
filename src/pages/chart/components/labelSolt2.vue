@@ -40,10 +40,13 @@ export default {
 .list {
   width: 150px;
   font-size: 12px;
+  background: orange;
+  border: 1px solid #fff;
   .list_title {
     height: 32px;
     line-height: 32px;
     padding-left: 12px;
+    border-bottom: 1px solid #fff;
   }
   .list_item {
     height: 28px;

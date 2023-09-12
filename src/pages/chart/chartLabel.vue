@@ -46,7 +46,7 @@ export default {
             "defaultNodeShape": 0,
             "from": "left",
             "min_per_width": "120",
-            "min_per_height": "120",
+            "min_per_height": "180",
             "max_per_width": "390",
           }
         ]
@@ -216,5 +216,8 @@ export default {
   color: #222 !important;
   background: transparent !important;
   border: 1px solid #eee !important;
+}
+::v-deep .rel-node-peel {
+  padding: 0 !important;
 }
 </style>
