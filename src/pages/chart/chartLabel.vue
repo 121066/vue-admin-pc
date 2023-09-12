@@ -11,7 +11,8 @@
         :on-line-click="onLineClick"
       >
         <template slot="node" slot-scope="{ node }">
-          <Slot1 :node="node" />
+          <Slot1 :node="node" v-if="node.data.slotType === 'slot1'" />
+          <Slot2 :node="node" v-if="node.data.slotType === 'slot2'" />
         </template>
       </relation-graph>
     </div>
@@ -22,10 +23,10 @@
 // 如果您没有在main.js文件中使用Vue.use(RelationGraph); 就需要使用下面这一行代码来引入relation-graph
 import RelationGraph from 'relation-graph';
 import Slot1 from './components/labelSolt.vue';
-
+import Slot2 from './components/labelSolt2.vue';
 export default {
   name: 'Demo',
-  components: { Slot1, RelationGraph },
+  components: { Slot1, RelationGraph, Slot2 },
   data () {
     return {
       slotTeamplateId: '',
@@ -34,18 +35,18 @@ export default {
         allowSwitchJunctionPoint: true,
         "defaultNodeBorderWidth": 0,
         "defaultNodeShape": 1,
-        "defaultJunctionPoint": "tb",
-        allowSwitchLineShape: true,
+        "defaultJunctionPoint": "border",
         "layouts": [
           {
             "label": "中心",
             "layoutName": "tree",
+
             "layoutClassName": "seeks-layout-center",
             "defaultJunctionPoint": "border",
             "defaultNodeShape": 0,
             "from": "left",
-            "min_per_width": "280",
-            "min_per_height": "280",
+            "min_per_width": "120",
+            "min_per_height": "120",
             "max_per_width": "390",
           }
         ]
@@ -79,7 +80,8 @@ export default {
               'pic': 'https://dss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2677153550,2207805387&fm=58&app=83&f=JPEG?w=250&h=250&s=249039DDC2D153D411A851360300C062',
               'name': '李达康',
               'slotType': 'slot2',
-              'myicon': 'el-icon-setting'
+              'myicon': 'el-icon-setting',
+              props: [{ text: '字段1' }, { text: '字段2' }, { text: '字段3' }]
             }
           },
           {
@@ -88,8 +90,9 @@ export default {
             'data': {
               'pic': 'https://dss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=1725297532,1915921796&fm=58&app=83&f=JPEG?w=250&h=250&s=FE8EA444A60759554DAC1DBB03000092',
               'name': '祁同伟',
-              'slotType': 'slot3',
-              'myicon': 'el-icon-setting'
+              'slotType': 'slot2',
+              'myicon': 'el-icon-setting',
+              props: [{ text: '字段1' }, { text: '字段2' }, { text: '字段3' }]
             }
           },
           {
@@ -98,7 +101,7 @@ export default {
             'data': {
               'pic': 'https://dss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=2025797948,1615296290&fm=58&app=83&f=JPEG?w=250&h=250&s=B5B04C331F32739C4604F9F503007021',
               'name': '陈岩石',
-              'slotType': 'slot4',
+              'slotType': 'slot1',
               'myicon': 'el-icon-star-on'
             }
           },
@@ -108,8 +111,9 @@ export default {
             'data': {
               'pic': 'https://dss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=344720653,260255884&fm=58&app=83&f=JPEG?w=250&h=250&s=57B8AB676AE862941D94ED170300E060',
               'name': '陆亦可',
-              'slotType': 'slot5',
-              'myicon': 'el-icon-setting'
+              'slotType': 'slot2',
+              'myicon': 'el-icon-setting',
+              props: [{ text: '字段1' }, { text: '字段2' }, { text: '字段3' }]
             }
           },
           {
@@ -118,7 +122,9 @@ export default {
             'data': {
               'pic': 'https://dss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3098576865,849900134&fm=58&app=83&f=JPEG?w=250&h=250&s=EDE01A63A65917DC104509920300C0C1',
               'name': '高育良',
-              'myicon': 'el-icon-setting'
+              'myicon': 'el-icon-setting',
+              'slotType': 'slot2',
+              props: [{ text: '字段1' }, { text: '字段2' }, { text: '字段3' }]
             }
           },
           {
@@ -132,11 +138,13 @@ export default {
           },
           {
             'id': 'f2',
-            'text': 'f2',
+            'text': '测试字段',
             'data': {
               'pic': 'https://dss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3098576865,849900134&fm=58&app=83&f=JPEG?w=250&h=250&s=EDE01A63A65917DC104509920300C0C1',
               'name': '高育良',
-              'myicon': 'el-icon-setting'
+              'slotType': 'slot2',
+              'myicon': 'el-icon-setting',
+              props: [{ text: '字段1' }, { text: '字段2' }, { text: '字段3' }]
             }
           }
         ],
@@ -167,14 +175,6 @@ export default {
           }
         ]
       };
-      // if (this.slotTeamplateId === 'slot6') {
-      //   Object.assign(__graph_json_data.nodes[0], { color: '#67C23A', borderColor: '#90EE90', nodeShape: 0, borderWidth: 5 });
-      //   Object.assign(__graph_json_data.nodes[1], { color: '#409EFF', borderColor: '#409EFF', nodeShape: 1, borderWidth: 1 });
-      //   Object.assign(__graph_json_data.nodes[2], { color: '', borderColor: '', nodeShape: 0, borderWidth: 0 });
-      //   Object.assign(__graph_json_data.nodes[3], { color: '#409EFF', borderColor: '#409EFF', nodeShape: 1, borderWidth: 1 });
-      //   Object.assign(__graph_json_data.nodes[4], { color: '', borderColor: '#409EFF', nodeShape: 0, borderWidth: 0 });
-      // }
-      console.log(this.slotTeamplateId, __graph_json_data);
       this.$refs.seeksRelationGraph.setJsonData(__graph_json_data, (graphInstance) => {
         // 这些写上当图谱初始化完成后需要执行的代码
       });
@@ -194,53 +194,6 @@ export default {
       this.userGraphOptions.defaultNodeShape = 1;
       this.userGraphOptions.defaultNodeBorderWidth = 0;
       this.resetGraphOptions(this.userGraphOptions);
-      //   if (this.slotTeamplateId === '') {
-      //     this.userGraphOptions.defaultNodeColor = '#67C23A';
-      //     this.userGraphOptions.defaultNodeBorderColor = '#90EE90';
-      //     this.userGraphOptions.defaultNodeShape = 0;
-      //     this.userGraphOptions.defaultNodeBorderWidth = 5;
-      //     this.resetGraphOptions(this.userGraphOptions);
-      //   }
-      //   if (this.slotTeamplateId === 'slot1') {
-      //     this.userGraphOptions.defaultNodeColor = '#67C23A';
-      //     this.userGraphOptions.defaultNodeBorderColor = '#90EE90';
-      //     this.userGraphOptions.defaultNodeShape = 0;
-      //     this.userGraphOptions.defaultNodeBorderWidth = 5;
-      //     this.resetGraphOptions(this.userGraphOptions);
-      //   }
-      //   if (this.slotTeamplateId === 'slot2') {
-      //     this.userGraphOptions.defaultNodeColor = '#409EFF';
-      //     this.userGraphOptions.defaultNodeShape = 1;
-      //     this.userGraphOptions.defaultNodeBorderWidth = 0;
-      //     this.resetGraphOptions(this.userGraphOptions);
-      //   }
-      //   if (this.slotTeamplateId === 'slot3') {
-      //     this.userGraphOptions.defaultNodeColor = '';
-      //     this.userGraphOptions.defaultNodeShape = 0;
-      //     this.userGraphOptions.defaultNodeBorderWidth = 0;
-      //     this.resetGraphOptions(this.userGraphOptions);
-      //   }
-      //   if (this.slotTeamplateId === 'slot4') {
-      //     this.userGraphOptions.defaultNodeColor = '#409EFF';
-      //     this.userGraphOptions.defaultNodeShape = 1;
-      //     this.userGraphOptions.defaultNodeBorderWidth = 1;
-      //     this.userGraphOptions.defaultNodeBorderColor = '#409EFF';
-      //     this.resetGraphOptions(this.userGraphOptions);
-      //   }
-      //   if (this.slotTeamplateId === 'slot5') {
-      //     this.userGraphOptions.defaultNodeColor = '';
-      //     this.userGraphOptions.defaultNodeShape = 0;
-      //     this.userGraphOptions.defaultNodeBorderWidth = 0;
-      //     this.userGraphOptions.defaultNodeBorderColor = '#409EFF';
-      //     this.resetGraphOptions(this.userGraphOptions);
-      //   }
-      //   if (this.slotTeamplateId === 'slot6') {
-      //     this.userGraphOptions.defaultNodeColor = '#eeeeee';
-      //     this.userGraphOptions.defaultNodeShape = 1;
-      //     this.userGraphOptions.defaultNodeBorderWidth = 1;
-      //     this.userGraphOptions.defaultNodeBorderColor = '#eeeeee';
-      //     this.resetGraphOptions(this.userGraphOptions);
-      //   }
     },
     onLineClick (lineObject, linkObject, $event) {
       console.log('onLineClick:', lineObject);
@@ -258,33 +211,10 @@ export default {
 </style>
 
 <style lang="scss" scoped>
-.c-node-menu-item {
-  line-height: 30px;
-  padding-left: 10px;
-  cursor: pointer;
-  color: #444444;
-  font-size: 14px;
-  border-top: #efefef solid 1px;
-}
-.c-node-menu-item:hover {
-  // background-color: rgba(66, 187, 66, 0.2);
-}
-.c-slot-teamplate {
-  border: 1px solid #efefef;
-  border-radius: 8px;
-  padding: 10px;
-  width: 150px;
-  height: 150px;
-  float: left;
-  margin-left: 10px;
-  margin-top: 10px;
-  cursor: pointer;
-  font-size: 12px;
-}
-.c-slot-teamplate:hover {
-  // border: 1px solid #00bb00;
-}
-.c-slot-teamplate-checked {
-  border: 1px solid #409eff;
+::v-deep .rel-node {
+  text-align: left;
+  color: #222 !important;
+  background: transparent !important;
+  border: 1px solid #eee !important;
 }
 </style>
