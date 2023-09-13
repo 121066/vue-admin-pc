@@ -11,6 +11,7 @@
     "axios": "^0.18.1",
     "core-js": "^3.8.3",
     "js-cookie": "^2.2.0",
+    "jsplumb": "^2.15.6",
     "path-to-regexp": "^2.4.0",
     "relation-graph": "^2.0.0",
     "vue": "^2.6.14",
