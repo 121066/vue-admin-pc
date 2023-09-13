@@ -42,9 +42,10 @@ export default {
           location: 1,
           length: 12,
           paintStyle: {
-            stroke: '#999',
+            stroke: 'red',//箭头颜色
             fill: '#999'
-          }
+          },
+
         }]
       ],
       Connector: ['Straight'], // 要使用的默认连接器的类型：直线，折线，曲线等
@@ -69,24 +70,85 @@ export default {
         isSource: true,
         isTarget: true,
         connector: ['Straight'],
+        isSource: true,
+        isTarget: true,
+        connector: 'Straight',
+        endpoint: 'Dot',
+        paintStyle: {
+          fill: 'white',
+          outlineStroke: 'blue',
+          strokeWidth: 3
+        },
+        hoverPaintStyle: {
+          outlineStroke: 'lightblue',
+          cursor: 'pointer'
+        },
+        connectorStyle: {
+          outlineStroke: 'green',
+          strokeWidth: 1
+        },
+        connectorHoverStyle: {
+          strokeWidth: 2
+        },
         // 动态锚点、提供了4个方向 Continuous、AutoDefault
         anchors: ['Right', 'Left']
       }
       this.jsPlumb.deleteEveryConnection()
       for (var i = 0; i < this.lineList.length; i++) {
         let line = this.lineList[i]
-        this.jsPlumb.connect({
+        const setting = {
           source: line.from,
           target: line.to,
-          paintStyle: { stroke: 'lightgray', strokeWidth: 3 },
-          endpointStyle: { fill: 'lightgray', outlineStroke: 'darkgray', outlineWidth: 2 }
-        }, jsplumbConnectOptions);
-        const _jsplumn = this.jsPlumb
-        _jsplumn.bind('connectionMoved', function (params) {
-          console.log(params, '>><<<')
-        })
+          paintStyle: { stroke: 'lightgray', strokeWidth: 3, color: 'red' },
+          hoverPaintStyle: {
+            outlineStroke: 'lightblue',
+            cursor: 'none',
+            color: 'red'
+          },
+          endpointStyle: { fill: 'lightgray', outlineStroke: 'darkgray', outlineWidth: 2 },
+          //   overlays: [['Custom', {
+          //     create: function () {
+          //       const d = document.createElement('div')
+          //       d.innerHTML = '<div>添加</div>'
+          //       return d
+          //     },
+          //     LabelStyle: { color: "red" },
+          //     paintStyle: { stroke: 'lightgray', strokeWidth: 3, },
+          //     hoverPaintStyle: {
+          //       outlineStroke: 'lightblue',
+          //       cursor: 'none',
+          //       color: 'red'
+          //     },
+          //     location: 0.5,
+          //     click: (e) => {
+          //       console.log(e, '点击了')
+          //     }
+          //   }]],
+          overlays: [
+            ["Label", { label: "foo", id: "label", color: 'red', location: 0.5, id: 'myLabel' }]
+          ],
+          connectorOverlays: [
+            ["Arrow", { width: 10, length: 30, location: 1, id: "arrow" }],
+            ["Label", { label: "foo", id: "label" }]
+          ],
+        }
+        this.jsPlumb.connect(setting, jsplumbConnectOptions);
+        this.jsPlumb.draggable(line.from)
+        var overlay = this.jsPlumb.getOverlay("myLabel");
+        // now you can hide this Overlay:
+        overlay.setVisible(false);
+        // there are also hide/show methods:
+        overlay.show();
+        overlay.hide();
+        // const _jsplumn = this.jsPlumb
+        // _jsplumn.bind('connectionMoved', function (params) {
+        //   console.log(params, '>><<<')
+        // })
       }
 
+    },
+    draggable (e) {
+      console.log(e)
     }
   }
 }
