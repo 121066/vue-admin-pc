@@ -21,6 +21,7 @@ export default {
   data () {
     return {
       jsPlumb: null,
+      isDarg: false,
       list: [
         { id: 'a', text: '测试A', list: [{ text: '字段a', id: 'a1' }] },
         { id: 'b', text: '测试B', list: [{ text: '字段b', id: 'b1' }] },
@@ -144,11 +145,28 @@ export default {
         // _jsplumn.bind('connectionMoved', function (params) {
         //   console.log(params, '>><<<')
         // })
+        for (let i = 0; i < this.list.length; i++) {
+          this.draggable(this.list[i])
+
+        }
       }
 
     },
     draggable (e) {
-      console.log(e)
+      const _that = this
+      this.jsPlumb.draggable(e.id, {
+        start () {
+          _that.isDarg = true
+        },
+        stop ({ el, pos }) {
+          e.left = pos[0]
+          e.top = pos[1]
+          setTimeout(() => {
+            _that.isDarg = false
+          })
+          console.log(pos)
+        }
+      })
     }
   }
 }
