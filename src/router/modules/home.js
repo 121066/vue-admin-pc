@@ -20,6 +20,15 @@ export const Home = [
         },
       },
       {
+        path: "/bubbleTable",
+        component: () => import("@/pages/table/bubbleTable/index.vue"),
+        name: "bubbleTable",
+        meta: {
+          title: "气泡表格",
+          icon: "el-icon-tickets",
+        },
+      },
+      {
         path: "/margeTable",
         component: (resolve) =>
           require(["@/pages/margeTable/index.vue"], resolve),
